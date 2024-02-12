@@ -1,3 +1,5 @@
+import math
+
 def newton_raphson(func, func_prime, x0, tol=1e-6, max_iter=100):
     x = x0
     for _ in range(max_iter):
@@ -8,7 +10,7 @@ def newton_raphson(func, func_prime, x0, tol=1e-6, max_iter=100):
     return x
 
 
-equation = input("Enter the equation in terms of 'x' (e.g., 'x**2 - 4'): ")
+equation = input("Enter the equation in terms of 'x' (e.g., 'x**2 - 4' or 'sin(x) - 0.5'): ")
 func = lambda x: eval(equation)
 func_prime = lambda x: (func(x + 1e-6) - func(x)) / 1e-6
 

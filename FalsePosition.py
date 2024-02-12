@@ -20,10 +20,9 @@ def false_position_method(func, a, b, tolerance=1e-6, max_iterations=100):
     raise ValueError("False Position method did not converge within the specified number of iterations.")
 
 if __name__ == "__main__":
-    equation_str = input("Enter the equation (use 'x' as the variable): ")
-
+    # Define the function for x**3 - 4x - 9
     def user_func(x):
-        return eval(equation_str, {'x': x})
+        return x**3 - 4*x - 9
 
     a = float(input("Enter the lower bound of the interval (a): "))
     b = float(input("Enter the upper bound of the interval (b): "))
