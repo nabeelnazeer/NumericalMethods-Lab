@@ -46,4 +46,3 @@ E = float(input("Enter the error: "))
 root, iteration = mullers(f,x0, x1, x2, E)
 print("The root is: ", root)
 print("The number of iterations taken is: ", iteration)
-
