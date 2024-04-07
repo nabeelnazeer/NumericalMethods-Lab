@@ -1,60 +1,38 @@
-def bisection_method(func, a, b, tolerance, max_iterations=100):
 
+import math
 
-    if func(a) * func(b) > 0:
-        raise ValueError("Initial values do not have opposite signs. Bisection method requires this condition.")
+def inp_func():
+    expression = input("enter the funcyion 'eg: 5x**2-3*x+7 ': ")
+    return lambda x: eval(expression)
 
+def bisetion(f, a, b, tol = 1e-6, max_iter = 100):
+    if f(a)*f(b) > 0:
+        raise ValueError("the function must have opposite sign on each end point")
     
-    iteration = 0
+    iterations = 0
+    while (b-a)/2 < tol and iterations < max_iter:
 
-    print(f"Iteration\t   a\t\t   b\t\t   c\t\t  f(c)")
-    print("-" * 60)
-
-    while iteration < max_iterations:
-    
-        c = (a + b) / 2
-
-      
-        print(f"{iteration + 1:4d}\t\t{a:.6f}\t\t{b:.6f}\t\t{c:.6f}\t\t{func(c):.6f}")
-
-
-        if abs(func(c)) < tolerance:
-            return c, iteration
-
-    
-        if func(c) * func(a) < 0:
+        c = (a+b)/2
+        if f(c) == 0:
+            return c
+        elif f(a) * f(c) < 0:
             b = c
         else:
             a = c
-
-        iteration += 1
-
-   
-    raise ValueError("Bisection method did not converge within the specified number of iterations.")
+        iterations+=1
+    return (a+b)/2
 
 
-if __name__ == "__main__":
-   
-    equation_str = input("Enter the equation (use 'x' as the variable): ")
+print("Enter the function")
 
-  
-    def user_func(x):
-        return eval(equation_str, {'x': x})
+f = inp_func()
 
-  
-    a = float(input("Enter the lower bound of the interval (a): "))
-    b = float(input("Enter the upper bound of the interval (b): "))
+a = float(input("enter the first interval: "))
+b = float(input("enter the second interval: "))
 
+tol = float(input("enter the min tolerance: "))
+iter = int(input ("enter the max no. of iteration: "))
 
-    epsilon = float(input("Enter the tolerance (epsilon): "))
+root = bisetion(f, a, b, tol, iter)
 
-   
-    try:
-        root, iterations = bisection_method(user_func, a, b, epsilon)
-
-        print("-" * 60)
-        print(f"Root found: {root}")
-        print(f"Iterations performed: {iterations}")
-
-    except ValueError as e:
-        print(e)
+print("the root of equation is: ", root)

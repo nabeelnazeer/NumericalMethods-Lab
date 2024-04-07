@@ -1,3 +1,5 @@
+
+
 def inp_func(x):
     return lambda x: eval(x)
 
