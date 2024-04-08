@@ -7,4 +7,10 @@ def trapezoidal(x, y):
         middle_term_2 += y[i]
 
 
-    result =     (h/3)*(y0 = 2*(middle_ter))
+    result =     (h/3)*(y[0] + 2*(middle_term_2) + y[len(y)- 1]) 
+    return result
+
+x = list(map(float, input("enter values of x (Space seperated)").split()))
+y = list(map(float, input("enter values of y (Space seperated)").split()))
+
+print(trapezoidal(x,y))
